@@ -1,20 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp3.1;netcoreapp2.1;net471;net452</TargetFrameworks>
+    <TargetFrameworks>netcoreapp3.1;netcoreapp2.1</TargetFrameworks>
     <RootNamespace>SpanJson.Tests</RootNamespace>
+    <AssemblyName>SpanJson.Linq.Tests</AssemblyName>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
-
-  <ItemGroup Condition="'$(ImportLibs)'=='netfx'">
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Data.Linq" />
-    <Reference Include="System.Data.Entity" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Data.DataSetExtensions" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Utf8Json" Version="1.3.7" />
@@ -25,8 +16,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\SpanJson.Extensions\SpanJson.Extensions.csproj" />
+    <ProjectReference Include="..\..\src\SpanJson.Extensions\SpanJson.Extensions.Netstandard.csproj" />
     <ProjectReference Include="..\SpanJson.Resources\SpanJson.Resources.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\SpanJson.Linq.Tests\**\*.cs" Exclude="..\SpanJson.Linq.Tests\bin\**;..\SpanJson.Linq.Tests\obj\**" />
+    <EmbeddedResource Include="..\SpanJson.Linq.Tests\**\*.resx" Exclude="..\SpanJson.Linq.Tests\bin\**;..\SpanJson.Linq.Tests\obj\**;@(EmbeddedResource)" />
   </ItemGroup>
 
 </Project>

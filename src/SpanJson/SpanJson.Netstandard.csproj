@@ -2,7 +2,7 @@
   <Import Project="..\nuget.props" />
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp3.1;netcoreapp2.1;netstandard2.1;netstandard2.0;net471;net451</TargetFrameworks>
+    <TargetFrameworks>netstandard2.1;netstandard2.0</TargetFrameworks>
     <RootNamespace>SpanJson</RootNamespace>
     <AssemblyName>SpanJson</AssemblyName>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
@@ -25,11 +25,7 @@
     <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="$(SystemRuntimeCompilerServicesUnsafePackageVersion)" />
     <PackageReference Include="System.Text.Encodings.Web" Version="$(SystemTextEncodingsWebPackageVersion)" />
   </ItemGroup>
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.1' ">
-    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="$(SystemRuntimeCompilerServicesUnsafe2PackageVersion)" />
-    <PackageReference Include="System.Text.Encodings.Web" Version="4.6.0" />
-  </ItemGroup>
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' or '$(TargetFramework)' == 'net471' or '$(TargetFramework)' == 'net451' ">
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
     <PackageReference Include="System.Buffers" Version="$(SystemBuffers2PackageVersion)" />
     <PackageReference Include="System.Memory" Version="$(SystemMemory2PackageVersion)" />
     <PackageReference Include="System.Numerics.Vectors" Version="$(SystemNumericsVectors2PackageVersion)" />

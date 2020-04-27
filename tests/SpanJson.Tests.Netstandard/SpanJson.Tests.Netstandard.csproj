@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netcoreapp3.1;netcoreapp2.1</TargetFrameworks>
+    <RootNamespace>SpanJson.Tests</RootNamespace>
+    <AssemblyName>SpanJson.Tests</AssemblyName>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup Condition=" '$(ImportLibs)' == 'netcore' ">
+    <PackageReference Include="Jil" Version="2.17.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="$(MicrosoftNetTestSdkPackageVersion)" />
+    <PackageReference Include="xunit" Version="$(xUnitPackageVersion)" />
+    <PackageReference Include="xunit.analyzers" Version="$(xUnitAnalyzersPackageVersion)" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="$(xUnitRunnerVsPackageVersion)" />
+
+    <PackageReference Include="Utf8Json" Version="1.3.7" />
+    <PackageReference Include="System.Collections.Immutable" Version="$(SystemCollectionsImmutablePackageVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\SpanJson\SpanJson.Netstandard.csproj" />
+    <ProjectReference Include="..\SpanJson.Shared\SpanJson.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\SpanJson.Tests\**\*.cs" Exclude="..\SpanJson.Tests\bin\**;..\SpanJson.Tests\obj\**" />
+    <EmbeddedResource Include="..\SpanJson.Tests\**\*.resx" Exclude="..\SpanJson.Tests\bin\**;..\SpanJson.Tests\obj\**;@(EmbeddedResource)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="..\SpanJson.Tests\JsonTestSuite\test_parsing.zip" Link="JsonTestSuite\test_parsing.zip" />
+  </ItemGroup>
+
+</Project>

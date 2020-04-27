@@ -61,12 +61,12 @@
     <SystemCollectionsImmutablePackageVersion>1.7.0</SystemCollectionsImmutablePackageVersion>
     <SystemReflectionMetadataPackageVersion>1.8.0</SystemReflectionMetadataPackageVersion>
 
-    <SystemBuffersPackageVersion>4.5.0</SystemBuffersPackageVersion>
+    <SystemBuffersPackageVersion>4.5.1</SystemBuffersPackageVersion>
     <SystemDiagnosticsDiagnosticSourcePackageVersion>4.7.0</SystemDiagnosticsDiagnosticSourcePackageVersion>
     <SystemIOPipelinesPackageVersion>4.7.0</SystemIOPipelinesPackageVersion>
-    <SystemMemoryPackageVersion>4.5.3</SystemMemoryPackageVersion>
+    <SystemMemoryPackageVersion>4.5.4</SystemMemoryPackageVersion>
     <SystemNetHttpPackageVersion>4.3.4</SystemNetHttpPackageVersion>
-    <SystemNumericsVectorsPackageVersion>4.6.0-preview5.19224.8</SystemNumericsVectorsPackageVersion>
+    <SystemNumericsVectorsPackageVersion>4.5.0</SystemNumericsVectorsPackageVersion>
 
     <SystemReflectionDispatchProxyPackageVersion>4.7.0</SystemReflectionDispatchProxyPackageVersion>
     <SystemReflectionEmitPackageVersion>4.7.0</SystemReflectionEmitPackageVersion>
@@ -75,7 +75,7 @@
     <SystemReflectionExtensionsPackageVersion>4.3.0</SystemReflectionExtensionsPackageVersion>
     <SystemReflectionTypeExtensionsPackageVersion>4.7.0</SystemReflectionTypeExtensionsPackageVersion>
 
-    <SystemRuntimeCompilerServicesUnsafePackageVersion>4.7.0</SystemRuntimeCompilerServicesUnsafePackageVersion>
+    <SystemRuntimeCompilerServicesUnsafePackageVersion>4.7.1</SystemRuntimeCompilerServicesUnsafePackageVersion>
 
     <SystemPrivateServiceModelPackageVersion>4.7.0</SystemPrivateServiceModelPackageVersion>
     <SystemServiceModelDuplexPackageVersion>4.7.0</SystemServiceModelDuplexPackageVersion>
@@ -96,7 +96,7 @@
     <SystemTextEncodingsWebPackageVersion>4.7.0</SystemTextEncodingsWebPackageVersion>
     <SystemThreadingChannelsPackageVersion>4.7.0</SystemThreadingChannelsPackageVersion>
     <SystemThreadingTasksDataflowPackageVersion>4.11.0</SystemThreadingTasksDataflowPackageVersion>
-    <SystemThreadingTasksExtensionsPackageVersion>4.5.3</SystemThreadingTasksExtensionsPackageVersion>
+    <SystemThreadingTasksExtensionsPackageVersion>4.5.4</SystemThreadingTasksExtensionsPackageVersion>
     <SystemValueTuplePackageVersion>4.5.0</SystemValueTuplePackageVersion>
 
     <!-- Ix packages -->
