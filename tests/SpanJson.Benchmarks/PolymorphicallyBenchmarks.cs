@@ -12,7 +12,7 @@ using SpanJson.Serialization;
 namespace SpanJson.Benchmarks
 {
     [Config(typeof(MyConfig))]
-    [DisassemblyDiagnoser(printIL: true, recursiveDepth: 2)]
+    //[DisassemblyDiagnoser(printIL: true, recursiveDepth: 2)]
     public class PolymorphicallyBenchmarks
     {
         private static readonly Drawing Draw;

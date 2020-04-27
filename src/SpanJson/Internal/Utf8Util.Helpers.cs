@@ -22,14 +22,7 @@ namespace SpanJson.Internal
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static int ConvertIntPtrToInt32WithoutOverflowCheck(IntPtr value)
         {
-            if (IntPtr.Size == 4)
-            {
-                return (int)value;
-            }
-            else
-            {
-                return (int)(long)value;
-            }
+            return UnsafeMemory.Is64BitProcess ? (int)(long)value : (int)value;
         }
 
         /// <summary>

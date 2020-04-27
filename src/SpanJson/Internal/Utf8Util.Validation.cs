@@ -60,7 +60,7 @@ namespace SpanJson.Internal
                 // hence the check for a length of >= 3 * Vector<byte>.Count at the beginning of this method.
 
                 byte* pbAlignedBuffer;
-                if (IntPtr.Size >= 8)
+                if (UnsafeMemory.Is64BitProcess)
                 {
                     pbAlignedBuffer = (byte*)(((long)pbBuffer + Vector<byte>.Count) & ~((long)Vector<byte>.Count - 1));
                 }
@@ -117,7 +117,7 @@ namespace SpanJson.Internal
 
             if (Vector.IsHardwareAccelerated)
             {
-                if (IntPtr.Size >= 8)
+                if (UnsafeMemory.Is64BitProcess)
                 {
                     // Test first 16 bytes and check for all-ASCII.
                     if ((inputLength >= 2 * sizeof(ulong) + 3 * Vector<byte>.Count) && QWordAllBytesAreAscii(ReadAndFoldTwoQWordsUnaligned(ref inputBuffer)))
@@ -454,7 +454,7 @@ namespace SpanJson.Internal
                     // that the character following this one is also CJK. We'll try to process several
                     // three-byte sequences at a time.
 
-                    if (IntPtr.Size >= 8 && BitConverter.IsLittleEndian && inputBufferRemainingBytes >= (sizeof(ulong) + 1))
+                    if (UnsafeMemory.Is64BitProcess && BitConverter.IsLittleEndian && inputBufferRemainingBytes >= (sizeof(ulong) + 1))
                     {
                         ulong thisQWord = Unsafe.ReadUnaligned<ulong>(ref Unsafe.Add(ref inputBuffer, inputBufferCurrentOffset));
 

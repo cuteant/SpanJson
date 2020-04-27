@@ -8,7 +8,7 @@ using NJObject = Newtonsoft.Json.Linq.JObject;
 namespace SpanJson.Benchmarks
 {
     [Config(typeof(MyConfig))]
-    [DisassemblyDiagnoser(printIL: true, recursiveDepth: 2)]
+    //[DisassemblyDiagnoser(printIL: true, recursiveDepth: 2)]
     public class JObjectBenchmarks
     {
         private static readonly NJObject JsonObj;
