@@ -1159,7 +1159,7 @@ namespace SpanJson.Internal
                     WriteDoubleChar(ref destSpace, '1', 'f', ref written);
                     break;
                 default:
-#if NETCOREAPP_2_X_GREATER1 // TODO
+#if NETCOREAPP_2_X_GREATER1 // 屏蔽，与 System.Text.Json 不同
                     destination[written++] = '\\';
                     destination[written++] = 'u';
                     int intChar = value;

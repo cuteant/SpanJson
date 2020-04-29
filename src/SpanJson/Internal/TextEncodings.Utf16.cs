@@ -1,12 +1,14 @@
 ﻿namespace SpanJson.Internal
 {
     using System;
+    using System.Buffers;
     using System.Runtime.CompilerServices;
+    using System.Runtime.InteropServices;
     using System.Text;
 
     public static partial class TextEncodings
     {
-        public static class Utf16
+        public static partial class Utf16
         {
             static readonly AsymmetricKeyHashTable<string> s_stringCache = new AsymmetricKeyHashTable<string>(StringReadOnlySpanByteAscymmetricEqualityComparer.Instance);
 

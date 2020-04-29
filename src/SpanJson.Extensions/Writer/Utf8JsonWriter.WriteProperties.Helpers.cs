@@ -200,11 +200,10 @@ namespace SpanJson
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void TranscodeAndWrite(in ReadOnlySpan<char> escapedPropertyName, ref byte output, int freeCapacity, ref int pos)
         {
-            ReadOnlySpan<byte> byteSpan = MemoryMarshal.AsBytes(escapedPropertyName);
-            OperationStatus status = TextEncodings.Utf8.ToUtf8(ref MemoryMarshal.GetReference(byteSpan), byteSpan.Length,
+            OperationStatus status = TextEncodings.Utf16.ToUtf8(escapedPropertyName,
                 ref Unsafe.Add(ref output, pos), freeCapacity, out int consumed, out int written);
             Debug.Assert(status == OperationStatus.Done);
-            Debug.Assert(consumed == byteSpan.Length);
+            Debug.Assert(consumed == escapedPropertyName.Length);
             pos += written;
         }
     }

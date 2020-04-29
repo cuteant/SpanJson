@@ -85,9 +85,8 @@ namespace SpanJson
             Unsafe.Add(ref output, pos++) = JsonUtf8Constant.Slash;
             Unsafe.Add(ref output, pos++) = JsonUtf8Constant.Asterisk;
 
-            ReadOnlySpan<byte> byteSpan = MemoryMarshal.AsBytes(value);
-            OperationStatus status = TextEncodings.Utf8.ToUtf8(ref MemoryMarshal.GetReference(byteSpan), byteSpan.Length,
-                ref Unsafe.Add(ref output, pos), FreeCapacity, out int _, out int written);
+            OperationStatus status = TextEncodings.Utf16.ToUtf8(value,
+                ref Unsafe.Add(ref output, pos), FreeCapacity, out _, out int written);
             Debug.Assert(status != OperationStatus.DestinationTooSmall);
             pos += written;
 
@@ -121,9 +120,8 @@ namespace SpanJson
             Unsafe.Add(ref output, pos++) = JsonUtf8Constant.Slash;
             Unsafe.Add(ref output, pos++) = JsonUtf8Constant.Asterisk;
 
-            ReadOnlySpan<byte> byteSpan = MemoryMarshal.AsBytes(value);
-            OperationStatus status = TextEncodings.Utf8.ToUtf8(ref MemoryMarshal.GetReference(byteSpan), byteSpan.Length,
-                ref Unsafe.Add(ref output, pos), FreeCapacity, out int _, out int written);
+            OperationStatus status = TextEncodings.Utf16.ToUtf8(value,
+                ref Unsafe.Add(ref output, pos), FreeCapacity, out _, out int written);
             Debug.Assert(status != OperationStatus.DestinationTooSmall);
             pos += written;
 

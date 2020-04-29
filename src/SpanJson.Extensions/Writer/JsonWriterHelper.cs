@@ -65,7 +65,7 @@ namespace SpanJson
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void ValidateDouble(double value)
         {
-#if NETCOREAPP
+#if NETCOREAPP || NETSTANDARD_2_0_GREATER
             if (!double.IsFinite(value))
 #else
             if (double.IsNaN(value) || double.IsInfinity(value))
@@ -78,7 +78,7 @@ namespace SpanJson
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void ValidateSingle(float value)
         {
-#if NETCOREAPP
+#if NETCOREAPP || NETSTANDARD_2_0_GREATER
             if (!float.IsFinite(value))
 #else
             if (float.IsNaN(value) || float.IsInfinity(value))

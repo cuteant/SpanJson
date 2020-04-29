@@ -189,7 +189,7 @@ namespace SpanJson.Internal
         public static string TranscodeHelper(in ReadOnlySpan<byte> utf8Text)
         {
 #if NET451
-            return TextEncodings.Utf8.ToString(utf8Text);
+            return TextEncodings.Utf8.GetString(utf8Text);
 #else
             try
             {
@@ -284,7 +284,7 @@ namespace SpanJson.Internal
             return TextEncodings.UTF8NoBOM.GetString(utf8Text);
 #else
 #if NET451
-            return TextEncodings.Utf8.ToString(utf8Text);
+            return TextEncodings.Utf8.GetString(utf8Text);
 #else
             if (utf8Text.IsEmpty)
             {

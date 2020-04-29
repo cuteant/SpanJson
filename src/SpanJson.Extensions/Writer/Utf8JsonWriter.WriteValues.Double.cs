@@ -101,7 +101,7 @@ namespace SpanJson
             // the .NET Core 3.0 logic of forwarding to the UTF16 formatter and transcoding it back to UTF8,
             // with some additional changes to remove dependencies on Span APIs which don't exist downlevel.
 
-#if NETCOREAPP_2_X_GREATER
+#if NETCOREAPP_2_X_GREATER || NETSTANDARD_2_0_GREATER
             return Utf8Formatter.TryFormat(value, destination, out bytesWritten);
 #else
             const string FormatString = "G17";

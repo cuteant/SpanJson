@@ -4,6 +4,7 @@
 
 // borrowed from https://github.com/dotnet/corefxlab/tree/master/src/System.Text.Primitives/System/Text/Encoders
 
+#if !NETCOREAPP_3_0_GREATER
 using System;
 using System.Diagnostics;
 using System.Numerics;
@@ -703,3 +704,4 @@ namespace SpanJson.Internal
         }
     }
 }
+#endif

@@ -81,7 +81,7 @@ namespace SpanJson.Formatters
                 case NJTokenType.Raw:
                     if (value.Value is byte[] utf8Json)
                     {
-                        writer.WriteUtf16Verbatim(TextEncodings.Utf8.ToString(utf8Json));
+                        writer.WriteUtf16Verbatim(TextEncodings.Utf8.GetString(utf8Json));
                     }
                     else
                     {

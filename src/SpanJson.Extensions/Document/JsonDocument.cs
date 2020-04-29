@@ -336,8 +336,7 @@ namespace SpanJson.Document
                 stackalloc byte[JsonSharedConstant.StackallocMaxLength] :
                 (otherUtf8TextArray = ArrayPool<byte>.Shared.Rent(length));
 
-            ReadOnlySpan<byte> utf16Text = MemoryMarshal.AsBytes(otherText);
-            OperationStatus status = TextEncodings.Utf8.ToUtf8(ref MemoryMarshal.GetReference(utf16Text), utf16Text.Length,
+            OperationStatus status = TextEncodings.Utf16.ToUtf8(otherText,
                 ref MemoryMarshal.GetReference(otherUtf8Text), otherUtf8Text.Length, out int consumed, out int written);
             Debug.Assert(status != OperationStatus.DestinationTooSmall);
             bool result;
@@ -348,7 +347,7 @@ namespace SpanJson.Document
             else
             {
                 Debug.Assert(status == OperationStatus.Done);
-                Debug.Assert(consumed == utf16Text.Length);
+                Debug.Assert(consumed == otherText.Length);
 
                 result = TextEquals(index, otherUtf8Text.Slice(0, written), isPropertyName);
             }

@@ -535,8 +535,7 @@ namespace SpanJson
                 }
             }
 
-            ReadOnlySpan<byte> utf16Text = MemoryMarshal.AsBytes(text);
-            OperationStatus status = TextEncodings.Utf8.ToUtf8(ref MemoryMarshal.GetReference(utf16Text), utf16Text.Length,
+            OperationStatus status = TextEncodings.Utf16.ToUtf8(text,
                 ref MemoryMarshal.GetReference(otherUtf8Text), otherUtf8Text.Length, out int consumed, out int written);
             Debug.Assert(status != OperationStatus.DestinationTooSmall);
             bool result;
@@ -547,7 +546,7 @@ namespace SpanJson
             else
             {
                 Debug.Assert(status == OperationStatus.Done);
-                Debug.Assert(consumed == utf16Text.Length);
+                Debug.Assert(consumed == text.Length);
 
                 result = TextEqualsHelper(otherUtf8Text.Slice(0, written));
             }

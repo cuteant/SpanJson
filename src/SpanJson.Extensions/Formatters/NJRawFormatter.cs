@@ -38,7 +38,7 @@ namespace SpanJson.Formatters
             switch (value.Value)
             {
                 case byte[] utf8Json:
-                    writer.WriteUtf16Verbatim(TextEncodings.Utf8.ToString(utf8Json));
+                    writer.WriteUtf16Verbatim(TextEncodings.Utf8.GetString(utf8Json));
                     break;
 
                 default:
