@@ -274,7 +274,8 @@ namespace SpanJson
         internal static void ThrowArgumentOutOfRange_IndexException()
         {
             throw GetException();
-            ArgumentOutOfRangeException GetException()
+
+            static ArgumentOutOfRangeException GetException()
             {
                 return new ArgumentOutOfRangeException("index", "Index was out of range. Must be non-negative and less than the size of the collection.");
             }
@@ -373,7 +374,8 @@ namespace SpanJson
         internal static void ThrowInvalidOperationException_NullArray()
         {
             throw GetException();
-            InvalidOperationException GetException()
+
+            static InvalidOperationException GetException()
             {
                 return new InvalidOperationException("The underlying array is null.");
             }
@@ -453,7 +455,8 @@ namespace SpanJson
         public static void ThrowInvalidOperationException_ReadInvalidUTF16()
         {
             throw GetException();
-            InvalidOperationException GetException()
+
+            static InvalidOperationException GetException()
             {
                 return new InvalidOperationException("Cannot read incomplete UTF-16 JSON text as string with missing low surrogate.");
             }

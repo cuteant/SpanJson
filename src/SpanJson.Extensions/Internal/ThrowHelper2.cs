@@ -117,7 +117,8 @@ namespace SpanJson
         internal static void ThrowArgumentException_ArrayIndex()
         {
             throw GetArgumentException();
-            ArgumentException GetArgumentException()
+
+            static ArgumentException GetArgumentException()
             {
                 return new ArgumentException("arrayIndex is equal to or greater than the length of array.");
             }
@@ -127,7 +128,8 @@ namespace SpanJson
         internal static void ThrowArgumentException_The_number_of_elements()
         {
             throw GetArgumentException();
-            ArgumentException GetArgumentException()
+
+            static ArgumentException GetArgumentException()
             {
                 return new ArgumentException("The number of elements in the source JObject is greater than the available space from arrayIndex to the end of the destination array.");
             }
@@ -137,7 +139,8 @@ namespace SpanJson
         internal static void ThrowArgumentException_The_specified_item_does_not_exist_in_this_KeyedCollection()
         {
             throw GetArgumentException();
-            ArgumentException GetArgumentException()
+
+            static ArgumentException GetArgumentException()
             {
                 return new ArgumentException("The specified item does not exist in this KeyedCollection.");
             }
@@ -224,7 +227,8 @@ namespace SpanJson
         internal static void ThrowArgumentOutOfRangeException_Unexpected_merge_array_handling_when_merging_JSON()
         {
             throw GetArgumentException();
-            ArgumentOutOfRangeException GetArgumentException()
+
+            static ArgumentOutOfRangeException GetArgumentException()
             {
                 return new ArgumentOutOfRangeException("settings", "Unexpected merge array handling when merging JSON.");
             }
@@ -244,7 +248,8 @@ namespace SpanJson
         internal static void ThrowArgumentOutOfRangeException_Index()
         {
             throw GetArgumentException();
-            ArgumentOutOfRangeException GetArgumentException()
+
+            static ArgumentOutOfRangeException GetArgumentException()
             {
                 return new ArgumentOutOfRangeException("index", "Index is less than 0.");
             }
@@ -254,7 +259,8 @@ namespace SpanJson
         internal static void ThrowArgumentOutOfRangeException_ArrayIndex()
         {
             throw GetArgumentException();
-            ArgumentOutOfRangeException GetArgumentException()
+
+            static ArgumentOutOfRangeException GetArgumentException()
             {
                 return new ArgumentOutOfRangeException("arrayIndex", "arrayIndex is less than 0.");
             }
@@ -264,7 +270,8 @@ namespace SpanJson
         internal static void ThrowArgumentOutOfRangeException_Index_is_equal_to_or_greater_than_Count()
         {
             throw GetArgumentException();
-            ArgumentOutOfRangeException GetArgumentException()
+
+            static ArgumentOutOfRangeException GetArgumentException()
             {
                 return new ArgumentOutOfRangeException("index", "Index is equal to or greater than Count.");
             }
@@ -310,7 +317,8 @@ namespace SpanJson
         internal static void ThrowInvalidOperationException_The_parent_is_missing()
         {
             throw GetInvalidOperationException();
-            InvalidOperationException GetInvalidOperationException()
+
+            static InvalidOperationException GetInvalidOperationException()
             {
                 return new InvalidOperationException("The parent is missing.");
             }
@@ -471,7 +479,8 @@ namespace SpanJson
         internal static void ThrowJsonException_Cannot_have_multiple_values_JProperty()
         {
             throw GetJsonException();
-            JsonException GetJsonException()
+
+            static JsonException GetJsonException()
             {
                 return new JsonException(string.Format(CultureInfo.InvariantCulture, "{0} cannot have multiple values.", typeof(JProperty)));
             }
@@ -481,7 +490,8 @@ namespace SpanJson
         internal static void ThrowJsonException_Path_returned_multiple_tokens()
         {
             throw GetJsonException();
-            JsonException GetJsonException()
+
+            static JsonException GetJsonException()
             {
                 return new JsonException("Path returned multiple tokens.");
             }
@@ -491,7 +501,8 @@ namespace SpanJson
         internal static void ThrowJsonException_Step_cannot_be_zero()
         {
             throw GetJsonException();
-            JsonException GetJsonException()
+
+            static JsonException GetJsonException()
             {
                 return new JsonException("Step cannot be zero.");
             }
@@ -501,7 +512,8 @@ namespace SpanJson
         internal static void ThrowJsonException_Array_index_expected()
         {
             throw GetJsonException();
-            JsonException GetJsonException()
+
+            static JsonException GetJsonException()
             {
                 return new JsonException("Array index expected.");
             }
@@ -517,7 +529,8 @@ namespace SpanJson
         internal static void ThrowJsonException_Unexpected_end_while_parsing_path()
         {
             throw GetJsonException();
-            JsonException GetJsonException()
+
+            static JsonException GetJsonException()
             {
                 return new JsonException("Unexpected end while parsing path.");
             }

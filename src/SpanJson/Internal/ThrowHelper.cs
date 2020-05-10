@@ -77,7 +77,8 @@ namespace SpanJson
         internal static void ThrowArgumentOutOfRangeException()
         {
             throw GetArgumentOutOfRangeException();
-            ArgumentOutOfRangeException GetArgumentOutOfRangeException()
+
+            static ArgumentOutOfRangeException GetArgumentOutOfRangeException()
             {
                 return new ArgumentOutOfRangeException();
             }
@@ -177,7 +178,8 @@ namespace SpanJson
         internal static void ThrowIndexOutOfRangeException()
         {
             throw GetIndexOutOfRangeException();
-            IndexOutOfRangeException GetIndexOutOfRangeException()
+
+            static IndexOutOfRangeException GetIndexOutOfRangeException()
             {
                 return new IndexOutOfRangeException();
             }
