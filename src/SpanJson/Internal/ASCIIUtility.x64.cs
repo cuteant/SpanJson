@@ -31,7 +31,7 @@ namespace SpanJson.Internal
         {
             // If the high bit of any byte is set, that byte is non-ASCII.
 
-            return ((value & ASCIIUtility.UInt64HighBitsOnlyMask) == 0);
+            return (0ul >= (value & ASCIIUtility.UInt64HighBitsOnlyMask));
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace SpanJson.Internal
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static bool AllCharsInUInt32AreAscii(uint value)
         {
-            return ((value & ~0x007F007Fu) == 0);
+            return (0u >= (value & ~0x007F007Fu));
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace SpanJson.Internal
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static bool AllCharsInUInt64AreAscii(ulong value)
         {
-            return ((value & ~0x007F007F_007F007Ful) == 0);
+            return (0ul >= (value & ~0x007F007F_007F007Ful));
         }
 
         /// <summary>
@@ -60,8 +60,8 @@ namespace SpanJson.Internal
         /// <returns></returns>
         private static bool FirstCharInUInt32IsAscii(uint value)
         {
-            return (BitConverter.IsLittleEndian && (value & 0xFF80u) == 0)
-                || (!BitConverter.IsLittleEndian && (value & 0xFF800000u) == 0);
+            return (BitConverter.IsLittleEndian && 0u >= (value & 0xFF80u))
+                || (!BitConverter.IsLittleEndian && 0u >= (value & 0xFF800000u));
         }
 
         /// <summary>
@@ -315,7 +315,7 @@ namespace SpanJson.Internal
 
             // If there is fewer than one vector length remaining, skip the next aligned read.
 
-            if ((bufferLength & SizeOfVector128) == 0)
+            if (0ul >= (bufferLength & SizeOfVector128))
             {
                 goto DoFinalUnalignedVectorRead;
             }
@@ -361,7 +361,7 @@ namespace SpanJson.Internal
             // instead be the second mask. If so, skip the entire first mask and drain ASCII bytes
             // from the second mask.
 
-            if (currentMask == 0)
+            if (0u >= currentMask)
             {
                 pBuffer += SizeOfVector128;
                 currentMask = secondMask;
@@ -645,7 +645,7 @@ namespace SpanJson.Internal
 
             // Quick check for empty inputs.
 
-            if (bufferLength == 0)
+            if (0ul >= bufferLength)
             {
                 return 0;
             }
@@ -777,7 +777,7 @@ namespace SpanJson.Internal
             // If there is fewer than one vector length remaining, skip the next aligned read.
             // Remember, at this point bufferLength is measured in bytes, not chars.
 
-            if ((bufferLength & SizeOfVector128InBytes) == 0)
+            if (0ul >= (bufferLength & SizeOfVector128InBytes))
             {
                 goto DoFinalUnalignedVectorRead;
             }
@@ -1086,7 +1086,7 @@ namespace SpanJson.Internal
                     // call into it after a quick probe to ensure the next immediate characters really are ASCII.
                     // If we see non-ASCII data, we'll jump immediately to the draining logic at the end of the method.
 
-                    if (IntPtr.Size >= 8)
+                    if (UnsafeMemory.Is64BitProcess)
                     {
                         utf16Data64Bits = Unsafe.ReadUnaligned<ulong>(pUtf16Buffer);
                         if (!AllCharsInUInt64AreAscii(utf16Data64Bits))
@@ -1118,7 +1118,7 @@ namespace SpanJson.Internal
                     // call into it after a quick probe to ensure the next immediate characters really are ASCII.
                     // If we see non-ASCII data, we'll jump immediately to the draining logic at the end of the method.
 
-                    if (IntPtr.Size >= 8)
+                    if (UnsafeMemory.Is64BitProcess)
                     {
                         utf16Data64Bits = Unsafe.ReadUnaligned<ulong>(pUtf16Buffer);
                         if (!AllCharsInUInt64AreAscii(utf16Data64Bits))
@@ -1169,7 +1169,7 @@ namespace SpanJson.Internal
                 nuint finalOffsetWhereCanLoop = currentOffset + remainingElementCount - 4;
                 do
                 {
-                    if (IntPtr.Size >= 8)
+                    if (UnsafeMemory.Is64BitProcess)
                     {
                         // Only perform QWORD reads on a 64-bit platform.
                         utf16Data64Bits = Unsafe.ReadUnaligned<ulong>(pUtf16Buffer + currentOffset);
@@ -1229,7 +1229,7 @@ namespace SpanJson.Internal
 
         FoundNonAsciiDataIn64BitRead:
 
-            if (IntPtr.Size >= 8)
+            if (UnsafeMemory.Is64BitProcess)
             {
                 // Try checking the first 32 bits of the buffer for non-ASCII data.
                 // Regardless, we'll move the non-ASCII data into the utf16Data32BitsHigh local.
@@ -1354,7 +1354,7 @@ namespace SpanJson.Internal
             // address &pAsciiBuffer[SizeOfVector128 / 2], and we should perform one more 8-byte write to bump
             // just past the next aligned boundary address.
 
-            if (((uint)pAsciiBuffer & (SizeOfVector128 / 2)) == 0)
+            if (0u >= ((uint)pAsciiBuffer & (SizeOfVector128 / 2)))
             {
                 // We need to perform one more partial vector write before we can get the alignment we want.
 
@@ -1584,7 +1584,7 @@ namespace SpanJson.Internal
 
             // Drain ASCII bytes one at a time.
 
-            while (((byte)asciiData & 0x80) == 0)
+            while (0u >= (uint)((byte)asciiData & 0x80))
             {
                 pUtf16Buffer[currentOffset] = (char)(byte)asciiData;
                 currentOffset += 1;
@@ -1675,7 +1675,7 @@ namespace SpanJson.Internal
 
             // Can we at least widen the first part of the vector?
 
-            if ((byte)mask == 0)
+            if (0u >= ((byte)mask))
             {
                 // First part was all ASCII, widen
                 utf16FirstHalfVector = Sse2.UnpackLow(asciiVector, zeroVector);

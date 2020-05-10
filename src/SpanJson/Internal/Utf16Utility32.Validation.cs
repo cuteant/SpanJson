@@ -48,7 +48,7 @@ namespace SpanJson.Internal
             pInputBuffer += (uint)numAsciiCharsConsumedJustNow;
             inputLength -= numAsciiCharsConsumedJustNow;
 
-            if (inputLength == 0)
+            if (0u >= (uint)inputLength)
             {
                 utf8CodeUnitCountAdjustment = 0;
                 scalarCountAdjustment = 0;
@@ -231,7 +231,7 @@ namespace SpanJson.Internal
                             // pair is in reality only encoded as 4 UTF-8 code units, we need to
                             // perform this adjustment now.
 
-                            if (IntPtr.Size == 8)
+                            if (UnsafeMemory.Is64BitProcess)
                             {
                                 // Since we've already zero-extended surrogatePairsCountNuint, we can directly
                                 // sub + sub. It's more efficient than shl + sub.
@@ -292,7 +292,7 @@ namespace SpanJson.Internal
                         }
 
                         uint popcnt32 = (uint)popcnt;
-                        if (IntPtr.Size == 8)
+                        if (UnsafeMemory.Is64BitProcess)
                         {
                             popcnt32 += (uint)(popcnt >> 32);
                         }
